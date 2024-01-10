@@ -610,7 +610,7 @@ In this document, we have learned to use LEX to build a lexical analyzer. A lexi
     1. Write a lex file
         1. To count the number of lines, words, and characters in the input.
         2. To count the number of integers and floating point numbers appearing in the input.
-        3. To list out all words of length three, starting with "A" to uppercase.
+        3. To list out all words of length three, starting with "A".
         4. To list out all C-like comments (both single line and multi line comments) from a text file.
 
 ## References
@@ -620,4 +620,3 @@ For further details on the topics covered in this document, the reader may refer
 1. Compilers : Principles,Techniques and Tools by Alfred V.Aho, Monica S. Lam, Ravi Sethi and Jeffrey D.Ulman .
 2. Modern Compiler Implementation in C by Andrew W.Appel
 3. Flex & Bison by John Levine
-4. [http://dinosaur.compilertools.net/](http://dinosaur.compilertools.net/)
