@@ -204,7 +204,7 @@ A complete illustration of all the shift and reduce steps is given [later](#the-
 |+ 22 - 33|DIGIT|DIGIT|SHIFT|||
 |+ 22 - 33||expr|REDUCE|printf("%d ",$1);|11|
 |22 - 33|+|expr +|SHIFT||11|
-|- 33|DIGIT|expr + 22|SHIFT||11|
+|- 33|DIGIT|expr + DIGIT|SHIFT||11|
 |- 33||expr + expr|REDUCE|printf("%d ",$1);|11 22|
 |33|-|expr + expr -|SHIFT||11 22|
 ||DIGIT|expr + expr - DIGIT|SHIFT||11 22|
@@ -480,22 +480,22 @@ We will see how attribute synthesis is done on input 2+3\*(4+5).
     <div class="two-col">
     <div>
     <img src="../img/ywl4.png">
-    <h5>PARSE STACK - BEFORE READ</h5>
+    <h5>PARSE STACK - BEFORE REDUCTION</h5>
     </div>
     <div>
     <img src="../img/ywl5.png">
-    <h5>ATTRIBUTE STACK - BEFORE READ</h5>
+    <h5>ATTRIBUTE STACK - BEFORE REDUCTION</h5>
     </div>
     </div>
 
     <div class="two-col">
     <div>
     <img src="../img/ywl6.png">
-    <h5>PARSE STACK - AFTER READ</h5>
+    <h5>PARSE STACK - AFTER REDUCTION</h5>
     </div>
     <div>
     <img src="../img/ywl7.png">
-    <h5>ATTRIBUTE STACK - AFTER READ</h5>
+    <h5>ATTRIBUTE STACK - AFTER REDUCTION</h5>
     </div>
     </div>
 
@@ -531,22 +531,22 @@ We will see how attribute synthesis is done on input 2+3\*(4+5).
     <div class="two-col">
     <div>
     <img src="../img/ywl12.png">
-    <h5>PARSE STACK - BEFORE READ</h5>
+    <h5>PARSE STACK - BEFORE REDUCTION</h5>
     </div>
     <div>
     <img src="../img/ywl13.png">
-    <h5>ATTRIBUTE STACK - BEFORE READ</h5>
+    <h5>ATTRIBUTE STACK - BEFORE REDUCTION</h5>
     </div>
     </div>
 
     <div class="two-col">
     <div>
     <img src="../img/ywl14.png">
-    <h5>PARSE STACK - AFTER READ</h5>
+    <h5>PARSE STACK - AFTER REDUCTION</h5>
     </div>
     <div>
     <img src="../img/ywl15.png">
-    <h5>ATTRIBUTE STACK - AFTER READ</h5>
+    <h5>ATTRIBUTE STACK - AFTER REDUCTION</h5>
     </div>
     </div>
 
@@ -594,22 +594,22 @@ We will see how attribute synthesis is done on input 2+3\*(4+5).
     <div class="two-col">
     <div>
     <img src="../img/ywl22.png">
-    <h5>PARSE STACK - BEFORE READ</h5>
+    <h5>PARSE STACK - BEFORE REDUCTION</h5>
     </div>
     <div>
     <img src="../img/ywl23.png">
-    <h5>ATTRIBUTE STACK - BEFORE READ</h5>
+    <h5>ATTRIBUTE STACK - BEFORE REDUCTION</h5>
     </div>
     </div>
 
     <div class="two-col">
     <div>
     <img src="../img/ywl24.png">
-    <h5>PARSE STACK - AFTER READ</h5>
+    <h5>PARSE STACK - AFTER REDUCTION</h5>
     </div>
     <div>
     <img src="../img/ywl25.png">
-    <h5>ATTRIBUTE STACK - AFTER READ</h5>
+    <h5>ATTRIBUTE STACK - AFTER REDUCTION</h5>
     </div>
     </div>
 
@@ -645,22 +645,22 @@ We will see how attribute synthesis is done on input 2+3\*(4+5).
     <div class="two-col">
     <div>
     <img src="../img/ywl30.png">
-    <h5>PARSE STACK - BEFORE READ</h5>
+    <h5>PARSE STACK - BEFORE REDUCTION</h5>
     </div>
     <div>
     <img src="../img/ywl31.png">
-    <h5>ATTRIBUTE STACK - BEFORE READ</h5>
+    <h5>ATTRIBUTE STACK - BEFORE REDUCTION</h5>
     </div>
     </div>
 
     <div class="two-col">
     <div>
     <img src="../img/ywl32.png">
-    <h5>PARSE STACK - AFTER READ</h5>
+    <h5>PARSE STACK - AFTER REDUCTION</h5>
     </div>
     <div>
     <img src="../img/ywl33.png">
-    <h5>ATTRIBUTE STACK - AFTER READ</h5>
+    <h5>ATTRIBUTE STACK - AFTER REDUCTION</h5>
     </div>
     </div>
 
@@ -668,11 +668,11 @@ We will see how attribute synthesis is done on input 2+3\*(4+5).
 
  ![](img/ywl34.png) ![](img/ywl35.png)
 
-PARSE STACK-BEFORE READ       ATTRIBUTE STACK-BEFORE READ
+PARSE STACK-BEFORE REDUCTION       ATTRIBUTE STACK-BEFORE REDUCTION
 
  ![](img/ywl36.png) ![](img/ywl37.png)
 
-PARSE STACK-AFTER READ       ATTRIBUTE STACK-AFTER READ
+PARSE STACK-AFTER REDUCTION       ATTRIBUTE STACK-AFTER REDUCTION
 
 17. Since there are no matching reductions, a shift action takes place. Lexer returns the literal token ‘)’ which is pushed to both parser stack and attribute stack.
 
@@ -684,31 +684,31 @@ PARSE STACK-AFTER SHIFT       ATTRIBUTE STACK-AFTER SHIFT
 
  ![](img/ywl40.png) ![](img/ywl41.png)
 
-PARSE STACK-BEFORE READ       ATTRIBUTE STACK-BEFORE READ
+PARSE STACK-BEFORE REDUCTION       ATTRIBUTE STACK-BEFORE REDUCTION
 
  ![](img/ywl42.png) ![](img/ywl43.png)
 
-PARSE STACK-AFTER READ       ATTRIBUTE STACK-AFTER READ
+PARSE STACK-AFTER REDUCTION       ATTRIBUTE STACK-AFTER REDUCTION
 
 19. Now we have expr\*expr on the top of the parser stack. Reduction by the rule expr: expr ‘\*’ expr occurs. The tokens ‘expr’, ‘\*’ and ‘expr’ are removed from the parse stack and a single ‘expr’ is pushed instead. The symbols ‘3’, ‘\*’ and ‘9’ are replaced by ‘27’ (that is, 3\*9) in the attribute stack.
 
  ![](img/ywl44.png) ![](img/ywl45.png)
 
-PARSE STACK-BEFORE READ       ATTRIBUTE STACK-BEFORE READ
+PARSE STACK-BEFORE REDUCTION       ATTRIBUTE STACK-BEFORE REDUCTION
 
  ![](img/ywl46.png) ![](img/ywl47.png)
 
-PARSE STACK-AFTER READ       ATTRIBUTE STACK-AFTER READ
+PARSE STACK-AFTER REDUCTION       ATTRIBUTE STACK-AFTER REDUCTION
 
 20. Reduction by the rule expr: expr ‘+’ expr takes place. Now we have a single ‘expr’ in the parser stack and ‘29’ in the attribute stack.
 
  ![](img/ywl48.png) ![](img/ywl49.png)
 
-PARSE STACK-BEFORE READ       ATTRIBUTE STACK-BEFORE READ
+PARSE STACK-BEFORE REDUCTION       ATTRIBUTE STACK-BEFORE REDUCTION
 
  ![](img/ywl50.png) ![](img/ywl51.png)
 
-PARSE STACK-AFTER READ       ATTRIBUTE STACK-AFTER READ
+PARSE STACK-AFTER REDUCTION       ATTRIBUTE STACK-AFTER REDUCTION
 
 21. Finally, lexer returns the ‘\\n’ character and the final reduction to ‘start’ occurs by the rule start: expr ‘\\n’. The semantic action prints ‘29’.
 
@@ -718,11 +718,11 @@ PARSE STACK-AFTER SHIFT       ATTRIBUTE STACK-AFTER SHIFT
 
  ![](img/ywl54.png) ![](img/ywl55.png)
 
-PARSE STACK-BEFORE READ       ATTRIBUTE STACK-BEFORE READ
+PARSE STACK-BEFORE REDUCTION       ATTRIBUTE STACK-BEFORE REDUCTION
 
-,/a ![](img/ywl56.png) ![](img/ywl57.png)
+ ![](img/ywl56.png) ![](img/ywl57.png)
 
-PARSE STACK-AFTER READ       ATTRIBUTE STACK-AFTER READ
+PARSE STACK-AFTER REDUCTION       ATTRIBUTE STACK-AFTER REDUCTION
 
 22. Lexer now encounters end of input (You need to enter Ctrl+D to indicate end of input as input is being read from stdout.) As a result yylex calls yywrap() which returns a non-zero value indication end of input. [yylex()](lex.md#navyywraplink) returns 0. (The $ in the input buffer stands for the end of input marker.)
 
@@ -1066,7 +1066,7 @@ PARSE STACK-AFTER SHIFT       ATTRIBUTE STACK-AFTER SHIFT
 
  ![](img/ywlexp4.png) ![](img/ywlexp3.png)
 
-PARSE STACK-AFTER READ       ATTRIBUTE STACK-AFTER READ
+PARSE STACK-AFTER REDUCTION       ATTRIBUTE STACK-AFTER REDUCTION
 
 3\. On reading + lexer creates a node and sets its op field to +. The flag field is set to 1 indicating that the node contains an operator. This node is passed to the parser by setting yylval to a pointer to this node.
 
@@ -1084,7 +1084,7 @@ PARSE STACK-AFTER SHIFT       ATTRIBUTE STACK-AFTER SHIFT
 
  ![](img/ywlexp10.png) ![](img/ywlexp9.png)
 
-PARSE STACK-AFTER READ       ATTRIBUTE STACK-AFTER READ
+PARSE STACK-AFTER REDUCTION       ATTRIBUTE STACK-AFTER REDUCTION
 
 Note that the reduction expr : expr ‘+’ expr does not take place since \* has higher precedence over +. The look-ahead hence tells the parser to shift and not reduce \[LINK\].
 
@@ -1108,7 +1108,7 @@ PARSE STACK-AFTER SHIFT       ATTRIBUTE STACK-AFTER SHIFT
 
  ![](img/ywlexp18.png) ![](img/ywlexp17.png)
 
-PARSE STACK-AFTER READ       ATTRIBUTE STACK-AFTER READ
+PARSE STACK-AFTER REDUCTION       ATTRIBUTE STACK-AFTER REDUCTION
 
 9\. The operator ‘-‘ is read passed to YACC similar to step 3.
 
@@ -1124,13 +1124,13 @@ PARSE STACK-AFTER SHIFT       ATTRIBUTE STACK-AFTER SHIFT
 
  ![](img/ywlexp24.png) ![](img/ywlexp23.png)
 
-PARSE STACK-AFTER READ       ATTRIBUTE STACK-AFTER READ
+PARSE STACK-AFTER REDUCTION       ATTRIBUTE STACK-AFTER REDUCTION
 
 11\. Now the reduction expr: expr ‘-‘ expr can take place. The nodes containing 21 and 16 are set to the l and r fields of the node containing ‘-‘ and the pointer to ‘-‘ is now the attribute value of the head. The bottom most part of the tree has been created.
 
  ![](img/ywlexp26.png) ![](img/ywlexp25.png)
 
-PARSE STACK-AFTER READ       ATTRIBUTE STACK-AFTER READ
+PARSE STACK-AFTER REDUCTION       ATTRIBUTE STACK-AFTER REDUCTION
 
 12\. The literal token ‘(‘ is read and returned. The reduction expr: ‘(‘ expr ‘)’ can now take place. Note how operator precedence is overridden using parentheses.
 
@@ -1140,19 +1140,19 @@ PARSE STACK-AFTER SHIFT       ATTRIBUTE STACK-AFTER SHIFT
 
  ![](img/ywlexp30.png) ![](img/ywlexp29.png)
 
-PARSE STACK-AFTER READ       ATTRIBUTE STACK-AFTER READ
+PARSE STACK-AFTER REDUCTION       ATTRIBUTE STACK-AFTER REDUCTION
 
 13\. Now the reduction expr: expr ‘\*‘ expr can take place. The nodes containing 4 and ‘-‘ are set to the l and r fields of the node containing ‘\*‘ and the pointer to ‘\*‘ is now the attribute value of the head. The tree now looks like this:
 
  ![](img/ywlexp32.png) ![](img/ywlexp31.png)
 
-PARSE STACK-AFTER READ       ATTRIBUTE STACK-AFTER READ
+PARSE STACK-AFTER REDUCTION       ATTRIBUTE STACK-AFTER REDUCTION
 
 14\. Now the reduction expr: expr ‘+‘ expr can take place. The nodes containing 33 and ‘\*‘ are set to the l and r fields of the node containing ‘+‘ and the pointer to ‘+‘ is now the attribute value of the head. The whole tree now looks like this: has been created.
 
  ![](img/ywlexp34.png) ![](img/ywlexp33.png)
 
-PARSE STACK-AFTER READ       ATTRIBUTE STACK-AFTER READ
+PARSE STACK-AFTER REDUCTION       ATTRIBUTE STACK-AFTER REDUCTION
 
 15\. Lexer now reads ‘\\n’ and finally the reduction program: expr ‘\\n’ takes place and the function evaluate is called with the rot node containing ‘+’ passed as argument.
 
@@ -1162,7 +1162,7 @@ PARSE STACK-AFTER SHIFT       ATTRIBUTE STACK-AFTER SHIFT
 
  ![](img/ywlexp38.png) ![](img/ywlexp37.png)
 
-PARSE STACK-AFTER READ       ATTRIBUTE STACK-AFTER READ
+PARSE STACK-AFTER REDUCTION       ATTRIBUTE STACK-AFTER REDUCTION
 
 16\. An inorder evaluation of the tree returns 243 which is printed as result.
 
