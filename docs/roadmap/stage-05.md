@@ -164,7 +164,7 @@ See [LINK](../data_structures/local-symbol-table.md) for more details. For now, 
 
 Our next aim is to perform semantic analysis, build the AST and then generate code. The strategy will be the following:
 
-*   1\. First, parse global declarations and create the global symbol table entries for functions andglobal variables (Already completed as Task 1)
+*   1\. First, parse global declarations and create the global symbol table entries for functions and global variables (Already completed as Task 1)
 *   2\. For each function for which code is not yet generated
     *   a) Check for **name equivalence** of the formal parameters of the function definition with the declaration. Name equivalence requires that the type and name of each formal parameter of the function in the declaration and the definition must agree.
     *   b) Create local symbol table containing local variables and parameters.
